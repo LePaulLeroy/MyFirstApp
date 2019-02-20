@@ -35,7 +35,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:background="@color/buttonBackground" />
+        android:background="@color/buttonBackground"
+        android:onClick="randomMe"/>
 
     <Button
         android:id="@+id/toast_button"
