@@ -3,45 +3,45 @@ package com.example.myfirstapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class SecondActivity extends AppCompatActivity {
+
+
+public class SecondActivity extends Activity {
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        showRandomNumber();
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        // use this setting to
+        // improve performance if you know that changes
+        // in content do not change the layout size
+        // of the RecyclerView
+        recyclerView.setHasFixedSize(true);
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        List<String> input = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            input.add("Test" + i);
+        }// define an adapter
+        mAdapter = new MyAdapter(input);
+        recyclerView.setAdapter(mAdapter);
     }
-
-    private static final String TOTAL_COUNT = "total_count";
-
-    public void showRandomNumber () {
-        // Get the text view where the random number will be displayed
-        TextView randomView = (TextView)
-                findViewById(R.id.textview_random);
-
-        // Get the text view where the heading is displayed
-        TextView headingView = (TextView)
-                findViewById(R.id.textview_label);
-
-        // Get the count from the intent extras
-        int count = getIntent().getIntExtra(TOTAL_COUNT, 0);
-
-        // Generate the random number
-        Random random = new Random();
-        int randomInt = 0;
-        if (count>0) {
-            randomInt = random.nextInt(count);
-        }
-
-        // Display the random number.
-        randomView.setText(Integer.toString(randomInt));
-
-        // Substitute the max value into the string resource
-        // for the heading, and update the heading
-        headingView.setText(getString(R.string.random_heading, count));
-    }
-
 }
+
+
+
+
