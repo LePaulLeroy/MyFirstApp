@@ -16,7 +16,7 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="20dp"
         android:contentDescription="TODO"
-        android:src="@mipmap/ic_launcher"
+        android:src="@android:drawable/screen_background_light_transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ban" />
 
@@ -32,7 +32,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:contentDescription="TODO"
-        android:src="@mipmap/ic_launcher"
+        android:src="@android:drawable/screen_background_light_transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,17 +60,13 @@
         android:layout_height="26dip"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="112dp"
 
-        android:layout_marginLeft="108dp"
+        android:layout_marginLeft="112dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_toRightOf="@id/icon"
         android:text="Nom de la ligue"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toEndOf="@+id/ligue"
         app:layout_constraintTop_toBottomOf="@+id/team" />
 
@@ -96,15 +92,11 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
         android:layout_toRightOf="@id/icon"
         android:text="Nom du manager"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.962"
         app:layout_constraintStart_toEndOf="@+id/manager"
         app:layout_constraintTop_toBottomOf="@+id/ligue_name" />
 
@@ -163,17 +155,13 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="32dp"
         android:layout_toRightOf="@id/icon"
         android:text="Nom du stade"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/stadium_photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toEndOf="@+id/stadiumcap" />
 
     <TextView
@@ -204,7 +192,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:contentDescription="TODO"
-        android:src="@mipmap/ic_launcher"
+        android:src="@android:drawable/screen_background_light_transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -237,7 +225,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="TODO"
-        android:src="@mipmap/ic_launcher"
+        android:src="@android:drawable/screen_background_light_transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stadium_photo"

@@ -23,6 +23,7 @@ public class ThirdActivity extends Activity {
     public TextView nomDeStade;
     public TextView nomDeStadecapa;
     public TextView nomDeStadeloca;
+    public TextView jerseyt;
     public ImageView ban;
     public ImageView iconclub;
     public ImageView stade;
@@ -47,18 +48,25 @@ public class ThirdActivity extends Activity {
         nomDeStade = findViewById(R.id.stadium_name);
         nomDeStadecapa = findViewById(R.id.stadium_capacity);
         nomDeStadeloca = findViewById(R.id.stadium_location);
+        jerseyt = findViewById(R.id.jersey);
 
         String name = data.getStrAlternate();
         final String compet = data.getStrLeague();
         final String manager = data.getStrManager();
         final int capa = data.getIntStadiumCapacity();
-        final String capas = Integer.toString(capa);
+        String capas = Integer.toString(capa);
         final String loca = data.getStrStadiumLocation();
         final String stadium = data.getStrStadium();
 
         if(name == ""){
             name = data.getStrTeam();
         }
+
+        if(stadium == null){
+            capas = "";
+        }
+
+
         //System.out.println("TTTTEEEESSSTTTT" + name);
         nomDeTeam.setText(name);
         nomDeLigue.setText(compet);
@@ -78,26 +86,45 @@ public class ThirdActivity extends Activity {
                 .resize(0,180)
                 .into(iconclub);
 
-        Picasso
-                .get()
-                .load(data.getStrTeamBanner())
-                .placeholder(R.drawable.ic_launcher_background)
-                .resize(0,180)
-                .into(ban);
-        Picasso
-                .get()
-                .load(data.getStrStadiumThumb())
-                .placeholder(R.drawable.ic_launcher_background)
-                .resize(0,400)
-                .into(stade);
-        Picasso
-                .get()
-                .load(data.getStrTeamJersey())
-                .placeholder(R.drawable.ic_launcher_background)
-                .resize(0,300)
-                .into(jersey);
+        if(data.getStrStadiumThumb() != null) {
+            Picasso
+                    .get()
+                    .load(data.getStrTeamBanner())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .resize(0, 180)
+                    .into(ban);
+        }
 
 
+        if(data.getStrStadiumThumb() != null){
+
+
+            Picasso
+                    .get()
+                    .load(data.getStrStadiumThumb())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .resize(0, 400)
+                    .into(stade);
+        }
+        else {
+            nomDeStadeloca.setText("");
+        }
+
+        if(data.getStrTeamJersey() != null){
+
+
+            Picasso
+                    .get()
+                    .load(data.getStrTeamJersey())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .resize(0, 300)
+                    .into(jersey);
+
+        }
+
+        else {
+            jerseyt.setText("");
+        }
 
     }
 
