@@ -1,7 +1,6 @@
 package com.example.myfirstapp;
 
 
-import java.util.Arrays;
 import java.util.List;
 
 import android.support.v7.widget.RecyclerView;
@@ -10,10 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.myfirstapp.model.DetailMatch;
+import com.example.myfirstapp.model.Competition;
+import com.example.myfirstapp.model.ListCompetition;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private List<DetailMatch> values;
+
+    private List<Competition> values;
+    private final View.OnClickListener listener;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -32,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
 
-    public void add(int position, DetailMatch item) {
+    public void add(int position, Competition item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -43,8 +45,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(DetailMatch[] myDataset) {
-        values = Arrays.asList(myDataset);
+    public MyAdapter(List<Competition> myDataset, View.OnClickListener listener) {
+        values = myDataset;
+        this.listener = listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -55,6 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.row_layout, parent, false);
+        v.setOnClickListener(this.listener);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -65,8 +69,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        DetailMatch currentMatch = values.get(position);
-        final String name = currentMatch.getCompetition_name();
+        Competition currentMatch = values.get(position);
+        final String name = currentMatch.getName();
         holder.txtHeader.setText(name);
         //holder.txtHeader.setOnClickListener(new OnClickListener() {
 
