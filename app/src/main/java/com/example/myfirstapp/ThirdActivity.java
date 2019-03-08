@@ -32,6 +32,7 @@ public class ThirdActivity extends Activity {
 
     public void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_third);
         Gson gson = new Gson();
         Intent intent = getIntent();
         data = gson.fromJson(intent.getStringExtra("data"),Competition.class);
@@ -47,7 +48,7 @@ public class ThirdActivity extends Activity {
         nomDeStadecapa = findViewById(R.id.stadium_capacity);
         nomDeStadeloca = findViewById(R.id.stadium_location);
 
-        final String name = data.getStrTeam();
+        String name = data.getStrAlternate();
         final String compet = data.getStrLeague();
         final String manager = data.getStrManager();
         final int capa = data.getIntStadiumCapacity();
@@ -55,7 +56,9 @@ public class ThirdActivity extends Activity {
         final String loca = data.getStrStadiumLocation();
         final String stadium = data.getStrStadium();
 
-
+        if(name == ""){
+            name = data.getStrTeam();
+        }
         //System.out.println("TTTTEEEESSSTTTT" + name);
         nomDeTeam.setText(name);
         nomDeLigue.setText(compet);
@@ -85,13 +88,13 @@ public class ThirdActivity extends Activity {
                 .get()
                 .load(data.getStrStadiumThumb())
                 .placeholder(R.drawable.ic_launcher_background)
-                .resize(0,180)
+                .resize(0,400)
                 .into(stade);
         Picasso
                 .get()
                 .load(data.getStrTeamJersey())
                 .placeholder(R.drawable.ic_launcher_background)
-                .resize(0,180)
+                .resize(0,300)
                 .into(jersey);
 
 
