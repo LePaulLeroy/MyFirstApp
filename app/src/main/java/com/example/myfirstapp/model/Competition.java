@@ -4,89 +4,104 @@ import java.util.Date;
 
 public class Competition {
 
-    private int    id;
-    private Area area;
-    private String name;
-    private String code;
-    private String emblemUrl;
-    private String plan;
-    private CurrentSeason currentSeason;
-    private int numberOfAvailableSeasons;
-    private Date lastUpdated;
+    private int idTeam;
+    private String strAlternate;
+    private String strTeam;
+    private int intFormedYear;
+    private String strSport;
+    private String strLeague;
+    private String strManager;
+    private String strStadium;
+    private String strStadiumThumb;
+    private String strStadiumDescription;
+    private String strStadiumLocation;
+    private int intStadiumCapacity;
+    private String strWebsite;
+    private String strDescriptionEN;
+    private String strCountry;
+    private String strTeamBadge;
+    private String strTeamJersey;
+    private String strTeamLogo;
+    private String strTeamBanner;
+    private String strTeamFanart1;
 
-    public Area getArea() {
-        return area;
+    public String getStrTeamBadge() {
+        return strTeamBadge;
     }
 
-    public void setArea(Area area) {
-        this.area = area;
+    public int getIdTeam() {
+        return idTeam;
     }
 
-    public int getId() {
-        return id;
+    public String getStrAlternate() {
+        return strAlternate;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getStrTeam() {
+        return strTeam;
     }
 
-
-
-    public String getName() {
-        return name;
+    public int getIntFormedYear() {
+        return intFormedYear;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getStrSport() {
+        return strSport;
     }
 
-    public String getCode() {
-        return code;
+    public String getStrLeague() {
+        return strLeague;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public String getStrManager() {
+        return strManager;
     }
 
-    public String getEmblemUrl() {
-        return emblemUrl;
+    public String getStrStadium() {
+        return strStadium;
     }
 
-    public void setEmblemUrl(String emblemUrl) {
-        this.emblemUrl = emblemUrl;
+    public String getStrStadiumThumb() {
+        return strStadiumThumb;
     }
 
-    public String getPlan() {
-        return plan;
+    public String getStrStadiumDescription() {
+        return strStadiumDescription;
     }
 
-    public void setPlan(String plan) {
-        this.plan = plan;
+    public String getStrStadiumLocation() {
+        return strStadiumLocation;
     }
 
-    public CurrentSeason getCurrentSeason() {
-        return currentSeason;
+    public int getIntStadiumCapacity() {
+        return intStadiumCapacity;
     }
 
-    public void setCurrentSeason(CurrentSeason currentSeason) {
-        this.currentSeason = currentSeason;
+    public String getStrWebsite() {
+        return strWebsite;
     }
 
-    public int getNumberOfAvailableSeasons() {
-        return numberOfAvailableSeasons;
+    public String getStrDescriptionEN() {
+        return strDescriptionEN;
     }
 
-    public void setNumberOfAvailableSeasons(int numberOfAvailableSeasons) {
-        this.numberOfAvailableSeasons = numberOfAvailableSeasons;
+    public String getStrCountry() {
+        return strCountry;
     }
 
-
-
-    public Date getLastUpdated() {
-        return lastUpdated;
+    public String getStrTeamJersey() {
+        return strTeamJersey;
     }
 
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public String getStrTeamLogo() {
+        return strTeamLogo;
+    }
+
+    public String getStrTeamBanner() {
+        return strTeamBanner;
+    }
+
+    public String getStrTeamFanart1() {
+        return strTeamFanart1;
     }
 }

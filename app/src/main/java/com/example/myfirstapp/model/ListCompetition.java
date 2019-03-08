@@ -4,10 +4,10 @@ import java.util.List;
 
 public class ListCompetition {
 
-    List<Competition> competitions;
+    List<Competition> teams;
 
     public List<Competition> getCompetitions() {
-        return competitions;
+        return teams;
     }
 
 
