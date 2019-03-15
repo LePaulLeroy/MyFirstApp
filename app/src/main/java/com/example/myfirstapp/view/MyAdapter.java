@@ -1,19 +1,23 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.view;
 
 
-import java.util.Arrays;
 import java.util.List;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.myfirstapp.model.DetailMatch;
+import com.example.myfirstapp.R;
+import com.example.myfirstapp.model.Competition;
+import com.squareup.picasso.Picasso;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private List<DetailMatch> values;
+
+    private List<Competition> values;
+    private final View.OnClickListener listener;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -22,6 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
+        public ImageView icon;
         public View layout;
 
         public ViewHolder(View v) {
@@ -29,10 +34,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            icon = (ImageView) v.findViewById(R.id.icon);
         }
     }
 
-    public void add(int position, DetailMatch item) {
+    public void add(int position, Competition item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -43,8 +49,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(DetailMatch[] myDataset) {
-        values = Arrays.asList(myDataset);
+    public MyAdapter(List<Competition> myDataset, View.OnClickListener listener) {
+        values = myDataset;
+        this.listener = listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -55,6 +62,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.row_layout, parent, false);
+        v.setOnClickListener(this.listener);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -65,13 +73,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        DetailMatch currentMatch = values.get(position);
-        final String name = currentMatch.getCompetition_name();
+        Competition currentMatch = values.get(position);
+        final String name = currentMatch.getStrTeam();
+        final String compet = currentMatch.getStrLeague();
+        //System.out.println("TTTTEEEESSSTTTT" + name);
         holder.txtHeader.setText(name);
         //holder.txtHeader.setOnClickListener(new OnClickListener() {
 
 
-        holder.txtFooter.setText("Footer: " + name);
+        holder.txtFooter.setText(compet);
+
+        Picasso
+                .get()
+                .load(currentMatch.getStrTeamBadge())
+                .placeholder(R.drawable.ic_launcher_background)
+                .resize(0,180)
+                .into(holder.icon);
+
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

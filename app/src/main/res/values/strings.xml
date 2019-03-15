@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Rename in strings.xml</string>
-    <string name="hello_world_text">Welcome in my Application</string>
+    <string name="app_name">Spanish Foot Team</string>
+    <string name="hello_world_text">Welcome in</string>
+    <string name="app_name2">Spanish Foot Team Wiki</string>
 
 
 </resources>

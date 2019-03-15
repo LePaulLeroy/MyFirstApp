@@ -1,21 +1,20 @@
 package com.example.myfirstapp.controller;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.example.myfirstapp.FootballAPI;
-import com.example.myfirstapp.SecondActivity;
-import com.example.myfirstapp.model.DetailMatch;
-import com.example.myfirstapp.model.FootMatch;
-import com.example.myfirstapp.model.RestMatch;
+import com.example.myfirstapp.view.SecondActivity;
+import com.example.myfirstapp.model.Competition;
+import com.example.myfirstapp.model.ListCompetition;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,13 +26,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class MainController {
 
+    private ListCompetition listcompet;
     private SecondActivity view;
+    private SharedPreferences share;
+    private Gson gson;
 
     public MainController(SecondActivity secondActivity) {
         this.view = secondActivity;
     }
 
+
     public void onCreate() {
+
 
         //Pour ceux qui veulent aller plus loin
         //Il faut créer ces objets avec des singletons.
@@ -41,9 +45,10 @@ public class MainController {
         //Pour ceux qui veulent encore aller plus loin
         //Voir Injection de dépendances
         //On crée un objet gson
-        Gson gson = new GsonBuilder()
+         gson = new GsonBuilder()
                 .setLenient()
                 .create();
+
 
 
       //  OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addHeader(HeadersContract.HEADER_AUTHONRIZATION, O_AUTH_AUTHENTICATION);
@@ -51,29 +56,50 @@ public class MainController {
 
         //On crée un objet retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://football-prediction-api.p.rapidapi.com/api/v2/")
+                .baseUrl("https://www.thesportsdb.com/api/v1/json/1/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         //On crée notre instance de notre RestAPI Pokemon.
         FootballAPI restApi = retrofit.create(FootballAPI.class);
 
+        share = SecondActivity.getContext().getSharedPreferences("cache", Context.MODE_PRIVATE);
 
-        Call<FootMatch> call = restApi.getListMatch();
-        call.enqueue(new Callback<FootMatch>() {
-            @Override
-            public void onResponse(Call<FootMatch> call, Response<FootMatch> response) {
-                FootMatch DetailMatch = response.body();
-                System.out.println("IIICCCCCCIIII CEST LE LOSC" + response);
-                com.example.myfirstapp.model.DetailMatch[] listMatch = DetailMatch.getData();
-                view.showTab(listMatch);
-            }
 
-            @Override
-            public void onFailure(Call<FootMatch> call, Throwable t) {
-                Log.d("ERROR", "Api Error");
-            }
-        });
+        if (share.contains("club")){
+            String listclub = share.getString("club", "");
+            Type listType = new TypeToken<ArrayList<Competition>>(){}.getType();
+            List<Competition>  compet = gson.fromJson(listclub,listType);
+            view.showTab(compet);
+        }
 
+        else {
+            Call<ListCompetition> call = restApi.getListMatch("Soccer", "Spain");
+            call.enqueue(new Callback<ListCompetition>() {
+                @Override
+                public void onResponse(Call<ListCompetition> call, Response<ListCompetition> response) {
+                    listcompet = response.body();
+                    //System.out.println("IIICCCCCCIIII CEST LE LOSC" + response);
+                    List<Competition>  compet = listcompet.getCompetitions();
+                    view.showTab(compet);
+                    share.edit()
+                            .putString("club",gson.toJson(compet))
+                            .apply();
+
+                }
+
+                @Override
+                public void onFailure(Call<ListCompetition> call, Throwable t) {
+                    Log.d("ERROR", "Api Error");
+                }
+            });
+
+        }
+        }
+
+
+
+    public ListCompetition getCompet(){
+        return  listcompet;
     }
 }
