@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.controller;
 
 
 import com.example.myfirstapp.model.ListCompetition;

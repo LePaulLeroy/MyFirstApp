@@ -1,10 +1,11 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.view;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.myfirstapp.R;
 import com.example.myfirstapp.model.Competition;
 import com.google.gson.Gson;
 

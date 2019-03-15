@@ -1,5 +1,6 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
@@ -7,9 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.myfirstapp.R;
 import com.example.myfirstapp.controller.MainController;
 import com.example.myfirstapp.model.Competition;
-import com.example.myfirstapp.model.ListCompetition;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class SecondActivity extends Activity {
     private RecyclerView.LayoutManager layoutManager;
 
     private MainController controller;
+    private static Context context;
 
 
     @Override
@@ -31,6 +33,8 @@ public class SecondActivity extends Activity {
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         // use this setting to
         controller = new MainController(this);
+
+        context = getApplicationContext();
         controller.onCreate();
     }
 
@@ -44,6 +48,9 @@ public class SecondActivity extends Activity {
         recyclerView.setAdapter(mAdapter);
     }
 
+    public static Context getContext (){
+        return context;
+    }
     public class ListenerClickCompet implements View.OnClickListener {
 
         @Override
@@ -53,8 +60,10 @@ public class SecondActivity extends Activity {
             Gson gson = new Gson();
             intent.putExtra("data",gson.toJson(controller.getCompet().getCompetitions().get(index)));
             startActivity(intent);
+
         }
     }
+
 }
 
 

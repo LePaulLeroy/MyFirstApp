@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.view;
 
 
 import java.util.List;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myfirstapp.R;
 import com.example.myfirstapp.model.Competition;
-import com.example.myfirstapp.model.ListCompetition;
 import com.squareup.picasso.Picasso;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
