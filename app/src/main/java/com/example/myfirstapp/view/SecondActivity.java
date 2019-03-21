@@ -48,6 +48,12 @@ public class SecondActivity extends Activity {
         recyclerView.setAdapter(mAdapter);
     }
 
+    public void refreshMe (View view) {
+
+
+
+    }
+
     public static Context getContext (){
         return context;
     }

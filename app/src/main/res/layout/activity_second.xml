@@ -3,16 +3,16 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".view.SecondActivity">>
+tools:context=".view.SecondActivity">
 
 
 <!-- A RecyclerView with some commonly used attributes -->
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/my_recycler_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="vertical" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
 <ImageView
     android:id="@+id/imageView1"
@@ -24,5 +24,22 @@ tools:context=".view.SecondActivity">>
     android:layout_marginRight="12dp"
     android:elevation="2dp"
     android:src="@android:drawable/ic_menu_add" />
+
+    <Button
+        android:id="@+id/refresh_button"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+
+
+        android:layout_alignBottom="@+id/my_recycler_view"
+
+
+
+
+        android:layout_marginStart="320dp"
+        android:layout_marginLeft="330dp"
+        android:layout_marginBottom="582dp"
+        android:background="@mipmap/refresh_foreground"
+        android:onClick="refreshMe" />
 
 </RelativeLayout>
