@@ -70,6 +70,8 @@ public class MainController {
             String listclub = share.getString("club", "");
             Type listType = new TypeToken<ArrayList<Competition>>(){}.getType();
             List<Competition>  compet = gson.fromJson(listclub,listType);
+            listcompet = new ListCompetition();
+            listcompet.setTeams(compet);
             view.showTab(compet);
         }
 

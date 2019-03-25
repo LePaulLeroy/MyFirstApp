@@ -10,5 +10,7 @@ public class ListCompetition {
         return teams;
     }
 
-
+    public void setTeams(List<Competition> teams) {
+        this.teams = teams;
+    }
 }

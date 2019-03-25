@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myfirstapp.R;
 import com.example.myfirstapp.model.Competition;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;

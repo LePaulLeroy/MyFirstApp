@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.view.ThirdActivity;
 import com.example.myfirstapp.controller.MainController;
 import com.example.myfirstapp.model.Competition;
 import com.google.gson.Gson;
