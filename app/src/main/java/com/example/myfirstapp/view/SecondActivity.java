@@ -51,6 +51,8 @@ public class SecondActivity extends Activity {
 
     public void refreshMe (View view) {
 
+        controller.cachefunct(true);
+        System.out.println("REFRESH");
 
 
     }

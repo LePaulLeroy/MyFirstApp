@@ -31,6 +31,10 @@ public class MainController {
     private SharedPreferences share;
     private Gson gson;
 
+
+
+    private FootballAPI restApi;
+
     public MainController(SecondActivity secondActivity) {
         this.view = secondActivity;
     }
@@ -53,20 +57,37 @@ public class MainController {
 
       //  OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addHeader(HeadersContract.HEADER_AUTHONRIZATION, O_AUTH_AUTHENTICATION);
 
-
-        //On crée un objet retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.thesportsdb.com/api/v1/json/1/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
+       restApi = retrofit.create(FootballAPI.class);
+
+        //On crée un objet retrofit
+
+
         //On crée notre instance de notre RestAPI Pokemon.
-        FootballAPI restApi = retrofit.create(FootballAPI.class);
 
         share = SecondActivity.getContext().getSharedPreferences("cache", Context.MODE_PRIVATE);
 
 
-        if (share.contains("club")){
+        cachefunct(false);
+
+        }
+
+
+
+    public ListCompetition getCompet(){
+        return  listcompet;
+    }
+
+
+
+
+    public void cachefunct (boolean cache){
+
+        if (share.contains("club") & cache ){
             String listclub = share.getString("club", "");
             Type listType = new TypeToken<ArrayList<Competition>>(){}.getType();
             List<Competition>  compet = gson.fromJson(listclub,listType);
@@ -97,11 +118,6 @@ public class MainController {
             });
 
         }
-        }
-
-
-
-    public ListCompetition getCompet(){
-        return  listcompet;
     }
 }
+
