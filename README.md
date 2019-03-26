@@ -39,17 +39,17 @@ https://github.com/LePaulLeroy/MyFirstApp
 
 - Menu de l'application
 
-<img src="img_readme/splash.png" alt="splash">
+<img src="img_readme/Ecran1.png" alt="Ecran d'accueil">
 
 ### Ecran Liste 
 
 - Affiche la liste des clubs de foot avec un boutton refresh.
 
-<img src="img_readme/liste_pokemon.png" alt="liste pokemon">   
+<img src="img_readme/Ecran2.png" alt="liste club">   
 
 ### Ecran du détail du clubs
 
 - Affiche les différentes informations sur le club
 
-<img src="img_readme/detail_pokemon.png" alt="détail pokemon"> <img src="img_readme/detail_pokemon_2.png" alt="détail pokemon"> 
+<img src="img_readme/Ecran3.png" alt="détail club"> 
 
